@@ -1,0 +1,84 @@
+<div class="modal-header">
+  <h5 class="modal-title">{{ user.name }}'s Details</h5>
+  <button type="button" class="btn-close" (click)="bsModalRef.hide()"></button>
+</div>
+<div class="modal-body">
+  <h6>General Information</h6>
+  <div class="table-responsive">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>Name:</th>
+          <td>{{ user.name }}</td>
+        </tr>
+        <tr>
+          <th>Username:</th>
+          <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+          <th>Phone:</th>
+          <td>{{ user.phone }}</td>
+        </tr>
+        <tr>
+          <th>Website:</th>
+          <td><a [href]="'http://' + user.website" target="_blank">{{ user.website }}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h6>Address</h6>
+  <div class="table-responsive">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>Street:</th>
+          <td>{{ user.address.street }}</td>
+        </tr>
+        <tr>
+          <th>Suite:</th>
+          <td>{{ user.address.suite }}</td>
+        </tr>
+        <tr>
+          <th>City:</th>
+          <td>{{ user.address.city }}</td>
+        </tr>
+        <tr>
+          <th>Zipcode:</th>
+          <td>{{ user.address.zipcode }}</td>
+        </tr>
+        <tr>
+          <th>Geo:</th>
+          <td>Lat: {{ user.address.geo.lat }}, Lng: {{ user.address.geo.lng }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h6>Company</h6>
+  <div class="table-responsive">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>Company Name:</th>
+          <td>{{ user.company.name }}</td>
+        </tr>
+        <tr>
+          <th>Catch Phrase:</th>
+          <td>{{ user.company.catchPhrase }}</td>
+        </tr>
+        <tr>
+          <th>Business:</th>
+          <td>{{ user.company.bs }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">Close</button>
+</div>

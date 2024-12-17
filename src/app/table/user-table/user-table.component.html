@@ -1,0 +1,28 @@
+<div class="d-flex">
+  <button class="btn btn-success ms-auto" (click)="add()">Add User</button>
+</div>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>
+          <div class="d-flex">
+            <button (click)="viewDetails(item)" class="btn btn-default ms-auto">Lihat Detail</button>
+            <button (click)="edit(item)" class="btn btn-info mx-2">Edit</button>
+            <button (click)="delete(item)" class="btn btn-danger">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

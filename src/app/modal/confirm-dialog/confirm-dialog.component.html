@@ -1,0 +1,9 @@
+<div class="modal-header">
+  <h5 class="modal-title">Dialog Confirmation</h5>
+  <button type="button" class="btn-close" (click)="bsModalRef.hide()"></button>
+</div>
+<div class="modal-body">
+  <p>{{ data?.message ?? 'Apakah anda yakin melakukan aksi hapus' }}</p>
+  <button class="btn btn-danger me-2" (click)="confirmDelete()">Yes</button>
+  <button class="btn btn-secondary" (click)="cancelDelete()">Cancel</button>
+</div>

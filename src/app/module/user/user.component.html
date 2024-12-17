@@ -1,0 +1,14 @@
+<app-user-form *ngIf="accessForm"
+  [user]="selectedUser" 
+  [isEditing]="isEditing" 
+  (formSubmit)="handleFormSubmit($event)"
+  (formReset)="resetForm()">
+</app-user-form>
+
+<app-user-table *ngIf="!accessForm"
+  [data]="data" 
+  (onInsert)="handleInsert()" 
+  (onEdit)="handleEdit($event)" 
+  (onDelete)="openDeleteModal($event)"
+  (onViewDetails)="openDetailModal($event)">
+</app-user-table>
