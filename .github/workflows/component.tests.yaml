@@ -24,15 +24,11 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       # Install Cypress dan dependensi lainnya untuk component testing
       - name: Install Cypress
         run: npm install cypress --save-dev
-
-      # Build aplikasi Angular (optional jika perlu)
-      - name: Build Angular Application
-        run: npm run build --if-present
 
       # Jalankan Cypress Component Tests
       - name: Run Cypress Component Tests

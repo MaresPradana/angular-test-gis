@@ -24,7 +24,7 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       # Jalankan server Angular untuk pengujian
       - name: Start Angular Server
