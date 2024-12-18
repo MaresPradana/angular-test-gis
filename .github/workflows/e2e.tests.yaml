@@ -26,10 +26,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Build aplikasi Angular
-      - name: Build Angular Application
-        run: npm run build --if-present
-
       # Jalankan server Angular untuk pengujian
       - name: Start Angular Server
         run: npm run start &
