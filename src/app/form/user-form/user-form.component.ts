@@ -58,7 +58,6 @@ export class UserFormComponent implements OnInit, IUserForm {
   onSubmit(): void {
     if (this.userForm.valid) {
       this.formSubmit.emit(this.userForm.value);
-      this.userForm.reset();  // Reset form saat dibatalkan
     } else {
       this.userForm.markAllAsTouched();
     }
