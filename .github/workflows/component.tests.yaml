@@ -1,4 +1,4 @@
-name: Component Testing and CI/CD
+name: Component Testing
 
 # Workflow hanya berjalan pada push ke branch main atau secara manual
 on:
