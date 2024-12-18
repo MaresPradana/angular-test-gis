@@ -26,10 +26,6 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      # Install Cypress dan dependensi lainnya untuk component testing
-      - name: Install Cypress
-        run: npm install cypress --save-dev
-
       # Jalankan Cypress Component Tests
       - name: Run Cypress Component Tests
         run: npm run cypress:component
