@@ -30,7 +30,7 @@
     "@angular/common": "^19.0.4",
     "@angular/compiler-cli": "^19.0.0",
     "@angular/core": "^19.0.4",
-    "@angular/platform-browser-dynamic": "^19.0.4",
+    "@angular/platform-browser-dynamic": "^18.2.13",
     "@types/jasmine": "~5.1.0",
     "angular-cli-ghpages": "^2.0.3",
     "cypress": "^13.17.0",

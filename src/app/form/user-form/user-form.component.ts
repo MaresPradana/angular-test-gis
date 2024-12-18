@@ -20,14 +20,16 @@ export class UserFormComponent implements OnInit, IUserForm {
   constructor(private fb: FormBuilder) {
     // Definisikan form dengan validasi
     this.userForm = this.fb.group({
-      name: ['', Validators.required],
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      street: ['', Validators.required],
-      city: ['', Validators.required],
-      companyName: ['', Validators.required]
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      username: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]*$/)]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
+      street: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9., ]*$/)]],
+      city: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/), Validators.maxLength(50)]],
+      companyName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9. ]*$/), Validators.maxLength(100)]]
     });
   }
+
+  get f() { return this.userForm.controls; }
 
   ngOnInit(): void {
     if (!this.isEditing || !this.user) {

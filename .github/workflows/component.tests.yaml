@@ -1,0 +1,48 @@
+name: Component Testing and CI/CD
+
+# Workflow hanya berjalan pada push ke branch main atau secara manual
+on:
+  push:
+    branches:
+      - main  # Jalankan hanya pada push ke branch main
+  workflow_dispatch:  # Menambahkan kemampuan untuk menjalankan secara manual
+
+jobs:
+  component-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Langkah untuk checkout kode dari repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Setup Node.js versi yang diinginkan
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Sesuaikan dengan versi Node.js yang kamu gunakan
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Install Cypress dan dependensi lainnya untuk component testing
+      - name: Install Cypress
+        run: npm install cypress --save-dev
+
+      # Build aplikasi Angular (optional jika perlu)
+      - name: Build Angular Application
+        run: npm run build --if-present
+
+      # Jalankan Cypress Component Tests
+      - name: Run Cypress Component Tests
+        run: npm run cypress:component
+
+      # Upload Cypress artifacts jika terjadi kegagalan (screenshot dan video)
+      - name: Upload Cypress artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-artifacts
+          path: cypress/screenshots/**/*.png
+          retention-days: 5

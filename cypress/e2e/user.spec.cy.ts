@@ -16,7 +16,7 @@ describe('User Management', () => {
     // Klik tombol tambah user
     cy.contains('Add User').click();
     cy.get('table').should('not.exist');
-    cy.get('form').should('exist');
+    cy.get('form').should('be.visible');
     
     // Submit form
     cy.get('button[type="submit"]').click();
@@ -36,7 +36,7 @@ describe('User Management', () => {
     // Klik tombol tambah user
     cy.contains('Edit').click();
     cy.get('table').should('not.exist');
-    cy.get('form').should('exist');
+    cy.get('form').should('be.visible');
 
     // Clear form user
     cy.get('input[formcontrolname="name"]').clear();
@@ -64,7 +64,7 @@ describe('User Management', () => {
     // Klik tombol tambah user
     cy.contains('Add User').click();
     cy.get('table').should('not.exist');
-    cy.get('form').should('exist');
+    cy.get('form').should('be.visible');
 
     // Isi form user
     cy.get('input[formcontrolname="name"]').type('John Doe');
@@ -76,6 +76,7 @@ describe('User Management', () => {
     
     // Submit form
     cy.get('button[type="submit"]').click();
+    cy.wait(1000);
 
     // Memastikan bahwa user baru muncul di tabel
     cy.get('form').should('not.exist');
@@ -88,7 +89,7 @@ describe('User Management', () => {
     // Klik tombol tambah user
     cy.contains('Edit').click();
     cy.get('table').should('not.exist');
-    cy.get('form').should('exist');
+    cy.get('form').should('be.visible');
 
     // Isi form user
     cy.get('input[formcontrolname="name"]').clear().type('John Doe');
@@ -167,12 +168,12 @@ describe('User Management', () => {
     // Klik tombol tambah user
     cy.contains('Add User').click();
     cy.get('table').should('not.exist');
-    cy.get('form').should('exist');
+    cy.get('form').should('be.visible');
     
     // Cancel form
     cy.contains('Cancel').click();
     cy.get('form').should('not.exist');
-    cy.get('table').should('exist');
+    cy.get('table').should('be.visible');
   });
 
   it('should close form when cancel edit', () => {
@@ -181,12 +182,12 @@ describe('User Management', () => {
     // Klik tombol tambah user
     cy.contains('Edit').click();
     cy.get('table').should('not.exist');
-    cy.get('form').should('exist');
+    cy.get('form').should('be.visible');
     
     // Cancel form
     cy.contains('Cancel').click();
     cy.get('form').should('not.exist');
-    cy.get('table').should('exist');
+    cy.get('table').should('be.visible');
   });
 });
   
