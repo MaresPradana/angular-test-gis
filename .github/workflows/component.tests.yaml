@@ -28,7 +28,7 @@ jobs:
 
       # Jalankan Cypress Component Tests
       - name: Run Cypress Component Tests
-        run: npm run cypress:component
+        run: npx cypress run --component
 
       # Upload Cypress artifacts jika terjadi kegagalan (screenshot dan video)
       - name: Upload Cypress artifacts

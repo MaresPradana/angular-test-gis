@@ -9,7 +9,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:e2e": "npx cypress run",
+    "cypress:component": "npx cypress run --component"
   },
   "private": true,
   "dependencies": {
