@@ -1,0 +1,54 @@
+name: E2E Testing
+
+# Hanya berjalan pada saat push ke branch 'main' atau trigger manual
+on:
+  push:
+    branches:
+      - main    # Jalankan hanya saat push ke branch 'main'
+  workflow_dispatch:  # Menambahkan kemampuan untuk menjalankan secara manual
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Langkah untuk checkout kode dari repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Setup Node.js versi yang diinginkan
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Sesuaikan dengan versi Node.js yang kamu gunakan
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Build aplikasi Angular
+      - name: Build Angular Application
+        run: npm run build --if-present
+
+      # Jalankan server Angular untuk pengujian
+      - name: Start Angular Server
+        run: npm run start &
+        env:
+          CI: true
+
+      # Tunggu server Angular aktif
+      - name: Wait for Angular to be ready
+        run: npx wait-on http://localhost:4200
+
+      # Jalankan Cypress E2E tests
+      - name: Run Cypress E2E tests
+        run: npx cypress run
+
+      # Upload Cypress screenshots & videos on failure (optional)
+      - name: Upload Cypress artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-artifacts
+          path: cypress/screenshots/**/*.png
+          retention-days: 5
